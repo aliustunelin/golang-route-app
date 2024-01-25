@@ -21,6 +21,10 @@ Servisler eş katmana sahip düzeydedirler.</br>
 ![mainDiagram](https://github.com/aliustunelin/golang-route-app/assets/40759486/751691a4-06d6-47e2-8701-d0577d696418)
 
 
+--->>>> Run Project
+#depends eklenecek
+go run main.go
+
 </br></br></br></br></br>
 Then then then; we are looking the code...
 
