@@ -13,15 +13,15 @@ Proje Gin Freamwork'ü kullanılarak, MongoDB'deki DB içerisindeki verileri kon
 •	Konum Düzenleme Sayfası: Kaydedilmiş konumların düzenlendiği uç noktadır.</br>
 •	Rotalama Uç Noktası:  Konumlar gönderilen konuma göre en yakın noktadan başlayarak rotalanacaktır. (Kuş bakışı olarak uzaklık ölçülebilir. Bina ve yollar yoksayılabilir.)</br>
 
+</br></br>
+Proje WebService katmanında Validation katmanına sahiptir.</br>
 
-Proje WebService katmanında Validation katmanına sahiptir.
-
-Servisler eş katmana sahip düzeydedirler.
+Servisler eş katmana sahip düzeydedirler.</br>
 
 ![mainDiagram](https://github.com/aliustunelin/golang-route-app/assets/40759486/751691a4-06d6-47e2-8701-d0577d696418)
 
 
-
+</br></br></br></br></br>
 Then then then; we are looking the code...
 
 
