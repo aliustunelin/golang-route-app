@@ -1,8 +1,8 @@
 # -Golang Route App
 
 Go'da bir rota çizim uygulaması planlayalım. </br> </br> </br>
-![image](https://user-images.githubusercontent.com/40759486/187882367-5535fa4d-74b6-41d2-aada-b3876b698b67.png)  </br>
-Proje Gin Freamwork'ü kullanılarak, MongoDB'deki DB içerisindeki verileri kontrol edecek şekilde yazılmış olan bir webService uygulamasıdır. </br></br></br>
+![image](https://raw.githubusercontent.com/gofiber/docs/master/static/img/logo-dark.svg)  </br>
+Proje Fiber Freamwork'ü kullanılarak, MongoDB'deki DB içerisindeki verileri kontrol edecek şekilde yazılmış olan bir webService uygulamasıdır. </br></br></br>
 
 
 </br>
