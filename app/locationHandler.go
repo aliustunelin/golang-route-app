@@ -1,6 +1,7 @@
 package app
 
 import (
+	"fmt"
 	"golang-route-app/models"
 	"golang-route-app/services"
 	"net/http"
@@ -48,4 +49,19 @@ func (h LocationHandler) DeleteLocation(c *fiber.Ctx) error {
 		return c.Status(http.StatusBadRequest).JSON(fiber.Map{"State": false})
 	}
 	return c.Status(http.StatusOK).JSON(fiber.Map{"State": true})
+}
+
+func (h LocationHandler) GetByNameWithDataLocation(c *fiber.Ctx) error {
+	query := c.Params("id")
+
+	cnv, _ := primitive.ObjectIDFromHex(query)
+
+	result, err := h.Service.LocationGetByNameWithData(cnv)
+	if err != nil {
+		return c.Status(http.StatusBadRequest).JSON(err.Error())
+	}
+
+	fmt.Println("-----ALİİ----")
+	fmt.Println(result)
+	return c.Status(http.StatusOK).JSON(result)
 }

@@ -25,6 +25,7 @@ func main() {
 	appRoute.Get("/api/locations", td.GetAllLocation)
 	//golang'deki id mongo' id değil
 	appRoute.Delete("/api/location/:id", td.DeleteLocation)
+	appRoute.Post("/api/location/:id", td.GetByNameWithDataLocation)
 	appRoute.Listen(":8080")
 
 }

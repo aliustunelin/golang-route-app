@@ -4,6 +4,7 @@ import (
 	"golang-route-app/dto"
 	"golang-route-app/models"
 	"golang-route-app/repos"
+	"log"
 
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
@@ -16,6 +17,7 @@ type LocationService interface {
 	LocationInsert(Location models.Location) (*dto.LocationDTO, error)
 	LocationGetAll() ([]models.Location, error)
 	LocationDelete(id primitive.ObjectID) (bool, error)
+	LocationGetByNameWithData(id primitive.ObjectID) ([]models.Location, error)
 }
 
 func (t DefaultLocationService) LocationInsert(Location models.Location) (*dto.LocationDTO, error) {
@@ -51,6 +53,15 @@ func (t DefaultLocationService) LocationDelete(id primitive.ObjectID) (bool, err
 	}
 
 	return true, nil
+}
+
+func (t DefaultLocationService) LocationGetByNameWithData(id primitive.ObjectID) ([]models.Location, error) {
+	result, err := t.Repo.GetByNameWithData(id)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return result, nil
+
 }
 
 func NewLocationService(Repo repos.LocationRepos) DefaultLocationService {

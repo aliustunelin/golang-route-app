@@ -20,6 +20,7 @@ type LocationRepos interface {
 	Insert(location models.Location) (bool, error)
 	GetAll() ([]models.Location, error)
 	Delete(id primitive.ObjectID) (bool, error)
+	GetByNameWithData(id primitive.ObjectID) ([]models.Location, error)
 }
 
 func (t LocationReposDB) Insert(location models.Location) (bool, error) {
@@ -75,6 +76,31 @@ func (t LocationReposDB) Delete(id primitive.ObjectID) (bool, error) {
 	}
 
 	return true, nil
+}
+
+func (t LocationReposDB) GetByNameWithData(id primitive.ObjectID) ([]models.Location, error) {
+	var ilocation models.Location
+	var ilocations []models.Location
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	result, err := t.LocationCollection.Find(ctx, bson.M{"id": id})
+
+	if err != nil {
+		log.Fatalln(err)
+		return nil, err
+	}
+
+	for result.Next(ctx) {
+		if err := result.Decode(&ilocation); err != nil {
+			log.Fatalln(err)
+			return nil, err
+		}
+		ilocations = append(ilocations, ilocation)
+	}
+
+	return ilocations, nil
 }
 
 func NewLocationReposDb(dbClient *mongo.Collection) LocationReposDB {
