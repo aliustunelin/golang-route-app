@@ -18,6 +18,7 @@ type LocationService interface {
 	LocationGetAll() ([]models.Location, error)
 	LocationDelete(id primitive.ObjectID) (bool, error)
 	LocationGetByNameWithData(id primitive.ObjectID) ([]models.Location, error)
+	LocationUpdateByID(location models.Location) (*dto.LocationDTO, error)
 }
 
 func (t DefaultLocationService) LocationInsert(Location models.Location) (*dto.LocationDTO, error) {
@@ -62,6 +63,24 @@ func (t DefaultLocationService) LocationGetByNameWithData(id primitive.ObjectID)
 	}
 	return result, nil
 
+}
+
+func (t DefaultLocationService) LocationUpdateByID(location models.Location) (*dto.LocationDTO, error) {
+	var res dto.LocationDTO
+	if len(location.Name) < 2 {
+		res.Status = false
+		return &res, nil
+	}
+
+	result, err := t.Repo.UpdateByID(location)
+
+	if err != nil || result == false {
+		res.Status = false
+		return &res, err
+	}
+
+	res = dto.LocationDTO{Status: result}
+	return &res, nil
 }
 
 func NewLocationService(Repo repos.LocationRepos) DefaultLocationService {

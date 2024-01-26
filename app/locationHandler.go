@@ -1,7 +1,6 @@
 package app
 
 import (
-	"fmt"
 	"golang-route-app/models"
 	"golang-route-app/services"
 	"net/http"
@@ -61,7 +60,23 @@ func (h LocationHandler) GetByNameWithDataLocation(c *fiber.Ctx) error {
 		return c.Status(http.StatusBadRequest).JSON(err.Error())
 	}
 
-	fmt.Println("-----ALİİ----")
-	fmt.Println(result)
 	return c.Status(http.StatusOK).JSON(result)
+}
+
+func (h LocationHandler) UpdateByIDLocation(c *fiber.Ctx) error {
+
+	var loction models.Location
+
+	if err := c.BodyParser(&loction); err != nil {
+		return c.Status(http.StatusBadRequest).JSON(err.Error())
+	}
+
+	// locID içinden çekmek veya c.params ile çekmek
+	result, err := h.Service.LocationUpdateByID(loction)
+
+	if err != nil || result.Status == false {
+		return c.Status(http.StatusBadRequest).JSON(err.Error())
+	}
+
+	return c.Status(http.StatusCreated).JSON(result)
 }

@@ -3,6 +3,7 @@ package repos
 import (
 	"context"
 	"errors"
+	"fmt"
 	"golang-route-app/models"
 	"log"
 	"time"
@@ -21,6 +22,7 @@ type LocationRepos interface {
 	GetAll() ([]models.Location, error)
 	Delete(id primitive.ObjectID) (bool, error)
 	GetByNameWithData(id primitive.ObjectID) ([]models.Location, error)
+	UpdateByID(location models.Location) (bool, error)
 }
 
 func (t LocationReposDB) Insert(location models.Location) (bool, error) {
@@ -31,8 +33,12 @@ func (t LocationReposDB) Insert(location models.Location) (bool, error) {
 
 	result, err := t.LocationCollection.InsertOne(ctx, location)
 
+	fmt.Println("------insert------")
+	fmt.Println(location.Name)
+	fmt.Println(result)
+
 	if result.InsertedID == nil || err != nil {
-		errors.New("failed add")
+		errors.New("failed add!!")
 		return false, err
 	}
 
@@ -101,6 +107,33 @@ func (t LocationReposDB) GetByNameWithData(id primitive.ObjectID) ([]models.Loca
 	}
 
 	return ilocations, nil
+}
+
+func (t LocationReposDB) UpdateByID(location models.Location) (bool, error) {
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	update := bson.M{
+		"$set": bson.M{
+			"name":        location.Name,
+			"lat":         location.Lat,
+			"lon":         location.Lat,
+			"markerColor": location.MarkerColor,
+		},
+	}
+
+	filter := bson.M{
+		"id": location.Id,
+	}
+
+	result := t.LocationCollection.FindOneAndUpdate(ctx, filter, update)
+
+	fmt.Println("------update------")
+	fmt.Println(location.Name)
+	fmt.Println(result)
+
+	return true, nil
 }
 
 func NewLocationReposDb(dbClient *mongo.Collection) LocationReposDB {

@@ -11,6 +11,7 @@ import (
 
 // projeyi mainden ayağa kaldıraz
 // sertup.go'daki connectedDB'yi çalıştıracağız
+// https://gist.github.com/aliustunelin/8e2d1fa132177507827f94d7f716795f
 func main() {
 	appRoute := fiber.New()
 	configs.ConnectDB()
@@ -26,6 +27,7 @@ func main() {
 	//golang'deki id mongo' id değil
 	appRoute.Delete("/api/location/:id", td.DeleteLocation)
 	appRoute.Post("/api/location/:id", td.GetByNameWithDataLocation)
+	appRoute.Post("/api/locaation", td.UpdateByIDLocation)
 	appRoute.Listen(":8080")
 
 }
