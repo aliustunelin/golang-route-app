@@ -15,16 +15,16 @@ func main() {
 	appRoute := fiber.New()
 	configs.ConnectDB()
 	//mongodb name
-	dbClient := configs.GetCollection(configs.DB, "todos")
+	dbClient := configs.GetCollection(configs.DB, "YukatLocations")
 
-	TodoRepoDb := repos.NewToDoReposDb(dbClient)
+	TodoRepoDb := repos.NewLocationReposDb(dbClient)
 
-	td := app.TodoHandler{Service: services.NewTodoService(TodoRepoDb)}
+	td := app.LocationHandler{Service: services.NewLocationService(TodoRepoDb)}
 
-	appRoute.Post("/api/todo", td.CreateTodo)
-	appRoute.Get("/api/todos", td.GetAllTodo)
+	appRoute.Post("/api/location", td.CreateLocation)
+	appRoute.Get("/api/locations", td.GetAllLocation)
 	//golang'deki id mongo' id değil
-	appRoute.Delete("/api/todo/:id", td.DeleteTodo)
+	appRoute.Delete("/api/location/:id", td.DeleteLocation)
 	appRoute.Listen(":8080")
 
 }

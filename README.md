@@ -18,11 +18,13 @@ Proje WebService katmanında Validation katmanına sahiptir.</br>
 
 Servisler eş katmana sahip düzeydedirler.</br>
 
+ORM Katmanlı Mimari Eklenmektedir.</br>
+
 ![mainDiagram](https://github.com/aliustunelin/golang-route-app/assets/40759486/751691a4-06d6-47e2-8701-d0577d696418)
 
 
 --->>>> Run Project
-#depends eklenecek
+#depends eklenecek</br>
 go run main.go
 
 </br></br></br></br></br>
