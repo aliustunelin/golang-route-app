@@ -80,3 +80,19 @@ func (h LocationHandler) UpdateByIDLocation(c *fiber.Ctx) error {
 
 	return c.Status(http.StatusCreated).JSON(result)
 }
+
+func (h LocationHandler) RoutingLocation(c *fiber.Ctx) error {
+	var location models.Location
+
+	if err := c.BodyParser(&location); err != nil {
+		return c.Status(http.StatusBadRequest).JSON(err.Error())
+	}
+	result, err := h.Service.LocationRouting(location)
+
+	if err != nil {
+		return c.Status(http.StatusInternalServerError).JSON(err.Error())
+	}
+
+	return c.Status(http.StatusOK).JSON(result)
+
+}

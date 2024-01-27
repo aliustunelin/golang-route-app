@@ -23,6 +23,12 @@ ORM Katmanlı Mimari Eklenmektedir.</br>
 ![mainDiagram](https://github.com/aliustunelin/golang-route-app/assets/40759486/751691a4-06d6-47e2-8701-d0577d696418)
 
 
+
+**rate limiter <br>
+go get golang.org/x/time/rate
+
+
+
 --->>>> Run Project
 #depends eklenecek</br>
 go run main.go

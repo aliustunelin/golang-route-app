@@ -28,6 +28,7 @@ func main() {
 	appRoute.Delete("/api/location/:id", td.DeleteLocation)
 	appRoute.Post("/api/location/:id", td.GetByNameWithDataLocation)
 	appRoute.Post("/api/locaation", td.UpdateByIDLocation)
+	appRoute.Post("/api/routing", td.RoutingLocation)
 	appRoute.Listen(":8080")
 
 }
