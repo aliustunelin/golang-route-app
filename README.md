@@ -31,15 +31,33 @@ Proje WebService katmanında Validation katmanına sahiptir.</br></br>
 
 
 </br></br>
-**Uygulama çalışma adımları: <br>
+** Uygulama çalışma adımları: <br>
+Go Paketleri
 ```bash
+go.mongodb.org/mongo-driver/mongo/options
+go get github.com/joho/godotenv
+go get github.com/stretchr/testify/assert
+go install github.com/golang/mock/mockgen@v1.6.0
+go get  github.com/golang/mock/mockgen/model
+go get golang.org/x/sync/errgroup
+go get go.mongodb.org/mongo-driver/x/mongo/driver/ocsp@v1.9.1
+go get -u github.com/gofiber/fiber/v2
 go get golang.org/x/time/rate
-```
-```bash
 go get golang.org/x/net/http
 ```
 
+Go Run veya Go Build
+```bash
+go mod tidy
+go run main.go
+go build
+```
 
+Docker İmage ve Run
+```bash
+docker build -t my-go-app:1.0 .
+docker run -p 8080:8080 my-go-app:1.0
+```
 
 
 
