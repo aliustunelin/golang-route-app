@@ -31,7 +31,7 @@ Proje WebService katmanında Validation katmanına sahiptir.</br></br>
 
 
 </br></br>
-** Uygulama çalışma adımları: <br>
+--->>>>  Uygulama çalışma adımları: <br>
 Go Paketleri
 ```bash
 go.mongodb.org/mongo-driver/mongo/options
@@ -58,12 +58,142 @@ Docker İmage ve Run
 docker build -t my-go-app:1.0 .
 docker run -p 8080:8080 my-go-app:1.0
 ```
+ </br> </br>
+--->>>> EndPoint Açıklamalar </br>
+Get All Locations: ../api/getLocations </br>
+Örnek Response:
+```bash
+[
+    {
+        "id": "65b44f65385987903625db3b",
+        "lat": 41.0902703,
+        "lon": 29.0078488,
+        "name": "MSÜ",
+        "markerColor": "red"
+    },
+    {
+        "id": "65b51edc5b737f0ee4a1532d",
+        "lat": 12.5302853,
+        "lon": 55.4078124,
+        "name": "Stanford",
+        "markerColor": "purple"
+    }
+]
+```
+Get Location by ID:  ../api/location/65b4501b385987903625db41 </br>
+Örnek Response:
+```bash
+[
+    {
+        "id": "65b4501b385987903625db41",
+        "lat": 38.5028741,
+        "lon": 43.2761524,
+        "name": "van kalesi",
+        "markerColor": "blue"
+    }
+]
+```
+
+Create Location :  ../api/createLocation </br>
+Örnek Request:
+```bash
+{
+    "lat": 38.5028741,
+    "lon": 43.2761524,
+    "name": "van kalesi",
+    "markerColor": "blue"
+}
+```
+
+Örnek Response:
+```bash
+{
+    "status": true
+}
+```
+
+Delete by ID Location :  ../api/deleteLocation/65b62bed2d2baa137b1d66c3 </br>
+Örnek Response:
+```bash
+{
+    "State": true
+}
+```
+
+Update by ID Location :  ../api/updateLocation </br>
+Örnek Request:
+```bash
+{
+    "id": "65b44fe9385987903625db3f",
+    "lat": 39.8999199,
+    "lon": 32.6353782,
+    "name": "odtü",
+    "markerColor": "white"
+}
+```
+
+Örnek Response:
+```bash
+{
+    "status": true
+}
+```
+
+Routing Location :  ../api/routing </br>
+Örnek Request:
+```bash
+{    
+    "lat": 22.7104309,
+    "lon": 12.1406101
+}
+```
+
+Örnek Response:
+```bash
+[
+    {
+        "air_distance": 32.65054077122609,
+        "id": "65b44fe9385987903625db3f",
+        "lat": 39.8999199,
+        "lon": 39.8999199,
+        "name": "odtü",
+        "target_location_lat": 22.7104309,
+        "target_location_lon": 12.1406101
+    },
+    {
+        "air_distance": 44.44869131151472,
+        "id": "65b51edc5b737f0ee4a1532d",
+        "lat": 12.5302853,
+        "lon": 55.4078124,
+        "name": "Stanford",
+        "target_location_lat": 22.7104309,
+        "target_location_lon": 12.1406101
+    },
+    {
+        "air_distance": 34.9116492956193,
+        "id": "65b4501b385987903625db41",
+        "lat": 38.5028741,
+        "lon": 43.2761524,
+        "name": "van kalesi",
+        "target_location_lat": 22.7104309,
+        "target_location_lon": 12.1406101
+    },
+    {
+        "air_distance": 135.35237625958078,
+        "id": "65b4514ee7040a71ee4c41e2",
+        "lat": 37.6162172,
+        "lon": -122.3885068,
+        "name": "san fra airport",
+        "target_location_lat": 22.7104309,
+        "target_location_lon": 12.1406101
+    }
+]
+```
 
 
 
---->>>> Run Project
-#depends eklenecek</br>
-go run main.go
+
+
 
 </br></br></br></br></br>
 Then then then; we are looking the code...
