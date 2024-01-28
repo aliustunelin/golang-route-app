@@ -2,12 +2,12 @@
 
 Go'da bir rota çizim uygulaması planlayalım. </br> </br> </br>
 ![image](https://raw.githubusercontent.com/gofiber/docs/master/static/img/logo-dark.svg)  </br>
-</br>->Proje Fiber Freamwork'ü kullanılarak, MongoDB'deki DB içerisindeki verileri kontrol edecek şekilde yazılmış olan bir webService uygulamasıdır.</br>
-->Uygulama içerisinde Golang'in Fiber web çatısıyla katmanlı mimari yazılmış olup, 6 adet endpoint bulunmaktadır. Rotalarla ilgili yeni lokasyon ekleme, mevcut lokasyonu düzenleme, lokasyon silme, 1 adet lokasyon ait bilgileri detaylı bir şekilde görme, tüm lokasyonları listeleme ve veritabanındaki tüm lokasyonlarla girilecek olan yeni bir merkez arasında rota çizme özellikleri uygulama içerisinde vardır.</br>
-->Uygulama içerisinde uniq test birimleri vardır.</br>
-->Uygulama istek limitine sahiptir. Max 20 tane istek hafızada 30sn olacak şekilde uygulama dışarıdan yapılacak olağan dışı trafiklere karşı koruma katmanına sahiptir.</br>
-->Uygulama Dockerize bir şekilde çalışma imkanı sunmaktadır.</br>
-->Uygulama CI/CD süreçlerine uygun bir şekilde geliştirilmiştir. Github Actions kullanılarak CI pipeline süreçleri yönetilmiş olup uygulama geliştrme ve test ortamında çalışmasında süreç main dalı üzerinde otomatize edilmiştir.</br>
+</br>->Proje Fiber Freamwork'ü kullanılarak, MongoDB'deki DB içerisindeki verileri kontrol edecek şekilde yazılmış olan bir webService uygulamasıdır.</br></br>
+->Uygulama içerisinde Golang'in Fiber web çatısıyla katmanlı mimari yazılmış olup, 6 adet endpoint bulunmaktadır. Rotalarla ilgili yeni lokasyon ekleme, mevcut lokasyonu düzenleme, lokasyon silme, 1 adet lokasyon ait bilgileri detaylı bir şekilde görme, tüm lokasyonları listeleme ve veritabanındaki tüm lokasyonlarla girilecek olan yeni bir merkez arasında rota çizme özellikleri uygulama içerisinde vardır.</br></br>
+->Uygulama içerisinde uniq test birimleri vardır.</br></br>
+->Uygulama istek limitine sahiptir. Max 20 tane istek hafızada 30sn olacak şekilde uygulama dışarıdan yapılacak olağan dışı trafiklere karşı koruma katmanına sahiptir.</br></br>
+->Uygulama Dockerize bir şekilde çalışma imkanı sunmaktadır.</br></br>
+->Uygulama CI/CD süreçlerine uygun bir şekilde geliştirilmiştir. Github Actions kullanılarak CI pipeline süreçleri yönetilmiş olup uygulama geliştrme ve test ortamında çalışmasında süreç main dalı üzerinde otomatize edilmiştir.</br></br>
 ->CI/CD süreçlerinden deploy kısmında uygulama Heroku üzerinde canlıya alınmıştır.</br>
 
 </br></br></br>
@@ -30,10 +30,15 @@ Proje WebService katmanında Validation katmanına sahiptir.</br></br>
 ![mainDiagram](https://github.com/aliustunelin/golang-route-app/assets/40759486/751691a4-06d6-47e2-8701-d0577d696418)
 
 
-
-**rate limiter <br>
+</br></br>
+**Uygulama çalışma adımları: <br>
+```bash
 go get golang.org/x/time/rate
+```
+```bash
 go get golang.org/x/net/http
+```
+
 
 
 
