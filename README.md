@@ -26,6 +26,8 @@ ORM Katmanlı Mimari Eklenmektedir.</br>
 
 **rate limiter <br>
 go get golang.org/x/time/rate
+go get golang.org/x/net/http
+
 
 
 

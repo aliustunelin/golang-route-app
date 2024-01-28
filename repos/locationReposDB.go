@@ -14,6 +14,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
+//go:generate mockgen -destination=../mocks//repository/mockLocationRepos.go -package=repos golang-route-app/repos LocationRepos
 type LocationReposDB struct {
 	LocationCollection *mongo.Collection
 }
@@ -174,7 +175,7 @@ func (t LocationReposDB) Routing(reqLocation models.Location) ([]primitive.M, er
 	for j, select_location_first := range ilocations {
 		temp = ilocations[j]["air_distance"]
 
-		fmt.Printf("items:%s\n", select_location_first)
+		log.Println(select_location_first)
 		for i, select_location := range ilocations {
 
 			if temp.(float64) < select_location["air_distance"].(float64) {

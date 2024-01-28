@@ -9,6 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
+//go:generate mockgen -destination=../mocks//service/mockLocationService.go -package=services golang-route-app/services LocationService
 type DefaultLocationService struct {
 	Repo repos.LocationRepos
 }
