@@ -73,7 +73,7 @@ func TestDefaultLocationService_LocationDelete(t *testing.T) {
 
 	fakeID := fakeData[0].Id
 
-	mockRepo.EXPECT().GetAll().Return(true, nil)
+	mockRepo.EXPECT().GetAll().Return(fakeData, nil)
 	mockRepo.EXPECT().Delete(fakeID).Return(true, nil)
 
 	result, err := service.LocationDelete(fakeID)
