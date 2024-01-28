@@ -60,7 +60,7 @@ docker run -p 8080:8080 my-go-app:1.0
 ```
  </br> </br>
 --->>>> EndPoint Açıklamalar </br>
-Get All Locations: ../api/getLocations </br>
+<b>Get All Locations:<b> ../api/getLocations </br>
 Örnek Response:
 ```bash
 [
@@ -80,7 +80,7 @@ Get All Locations: ../api/getLocations </br>
     }
 ]
 ```
-Get Location by ID:  ../api/location/65b4501b385987903625db41 </br>
+</br> <b>Get Location by ID:</b>  ../api/location/65b4501b385987903625db41 </br>
 Örnek Response:
 ```bash
 [
@@ -94,7 +94,7 @@ Get Location by ID:  ../api/location/65b4501b385987903625db41 </br>
 ]
 ```
 
-Create Location :  ../api/createLocation </br>
+</br> <b>Create Location :</b>  ../api/createLocation </br>
 Örnek Request:
 ```bash
 {
@@ -112,7 +112,7 @@ Create Location :  ../api/createLocation </br>
 }
 ```
 
-Delete by ID Location :  ../api/deleteLocation/65b62bed2d2baa137b1d66c3 </br>
+</br><b>Delete by ID Location :</b>  ../api/deleteLocation/65b62bed2d2baa137b1d66c3 </br>
 Örnek Response:
 ```bash
 {
@@ -120,7 +120,7 @@ Delete by ID Location :  ../api/deleteLocation/65b62bed2d2baa137b1d66c3 </br>
 }
 ```
 
-Update by ID Location :  ../api/updateLocation </br>
+</br><b>Update by ID Location :</b>  ../api/updateLocation </br>
 Örnek Request:
 ```bash
 {
@@ -139,7 +139,7 @@ Update by ID Location :  ../api/updateLocation </br>
 }
 ```
 
-Routing Location :  ../api/routing </br>
+</br><b>Routing Location :</b>  ../api/routing </br>
 Örnek Request:
 ```bash
 {    
