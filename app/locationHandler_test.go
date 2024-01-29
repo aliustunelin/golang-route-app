@@ -43,7 +43,7 @@ func TestTodoHandler_GetAllLocation(t *testing.T) {
 		{Id: primitive.NewObjectID(), Name: "Antalya Üniversitesi", MarkerColor: "brown", Lon: 48.2326346, Lat: 173.3123749},
 	}
 
-	mockService.EXPECT().LocationGetAll().Return(FakeDataForHandler, nil)
+	mockService.EXPECT().GetAllLocationService().Return(FakeDataForHandler, nil)
 
 	req := httptest.NewRequest("GET", "/api/todos", nil)
 

@@ -3,7 +3,6 @@ package repos
 import (
 	"context"
 	"errors"
-	"fmt"
 	"golang-route-app/models"
 	"log"
 	"math"
@@ -35,10 +34,6 @@ func (t LocationReposDB) Insert(location models.Location) (bool, error) {
 	location.Id = primitive.NewObjectID()
 
 	result, err := t.LocationCollection.InsertOne(ctx, location)
-
-	fmt.Println("------insert------")
-	fmt.Println(location.Name)
-	fmt.Println(result)
 
 	if result.InsertedID == nil || err != nil {
 		errors.New("failed add!!")
@@ -131,10 +126,9 @@ func (t LocationReposDB) UpdateByID(location models.Location) (bool, error) {
 	}
 
 	result := t.LocationCollection.FindOneAndUpdate(ctx, filter, update)
-
-	fmt.Println("------update------")
-	fmt.Println(location.Name)
-	fmt.Println(result)
+	if result == nil {
+		log.Fatalln(result, " is not update!")
+	}
 
 	return true, nil
 }
@@ -186,10 +180,6 @@ func (t LocationReposDB) Routing(reqLocation models.Location) ([]primitive.M, er
 		}
 
 	}
-
-	//aslında rotaların isimlerini bir jsonda sıralayarak vermekde mantıklı ancak
-	//sıralanmış halleriyle 0->1->2... diye gitmesi içerisinde konum vs bilgieerinde olması daha mantıklı
-	// producta kullanımda sadece isimleri kullanmayacağız sonuçta konum vs verileride gerekli
 
 	return ilocations, nil
 

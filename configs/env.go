@@ -17,3 +17,14 @@ func EnvMongoURI() string {
 	mongoURI := os.Getenv("MONGOURI")
 	return mongoURI
 }
+
+func EnvMongoName() string {
+	err := godotenv.Load()
+
+	if err != nil {
+		log.Fatalln("error .env")
+	}
+
+	mongoDbName := os.Getenv("MONGODBNAME")
+	return mongoDbName
+}

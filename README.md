@@ -80,7 +80,19 @@ docker run -p 8080:8080 my-go-app:1.0
     }
 ]
 ```
-</br> <b>Get Location by ID:</b>  ../api/location/65b4501b385987903625db41 </br>
+</br> <b>Get Location by ID:</b>  ../api/location </br>
+
+Örnek Request:
+```bash
+[
+    {
+        "id": "65b4501b385987903625db41"
+    }
+]
+```
+</br>
+
+
 Örnek Response:
 ```bash
 [
@@ -112,7 +124,17 @@ docker run -p 8080:8080 my-go-app:1.0
 }
 ```
 
-</br><b>Delete by ID Location :</b>  ../api/deleteLocation/65b62bed2d2baa137b1d66c3 </br>
+</br><b>Delete by ID Location :</b>  ../api/deleteLocation </br>
+
+
+Örnek Request:
+```bash
+{
+    "id": "65b44fe9385987903625db3f"
+}
+```
+
+</br>
 Örnek Response:
 ```bash
 {

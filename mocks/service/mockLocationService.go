@@ -37,7 +37,7 @@ func (m *MockLocationService) EXPECT() *MockLocationServiceMockRecorder {
 }
 
 // LocationDelete mocks base method.
-func (m *MockLocationService) LocationDelete(arg0 primitive.ObjectID) (bool, error) {
+func (m *MockLocationService) DeleteLocationService(arg0 primitive.ObjectID) (bool, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "LocationDelete", arg0)
 	ret0, _ := ret[0].(bool)
@@ -46,13 +46,13 @@ func (m *MockLocationService) LocationDelete(arg0 primitive.ObjectID) (bool, err
 }
 
 // LocationDelete indicates an expected call of LocationDelete.
-func (mr *MockLocationServiceMockRecorder) LocationDelete(arg0 interface{}) *gomock.Call {
+func (mr *MockLocationServiceMockRecorder) DeleteLocationService(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationDelete", reflect.TypeOf((*MockLocationService)(nil).LocationDelete), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationDelete", reflect.TypeOf((*MockLocationService)(nil).DeleteLocationService), arg0)
 }
 
 // LocationGetAll mocks base method.
-func (m *MockLocationService) LocationGetAll() ([]models.Location, error) {
+func (m *MockLocationService) GetAllLocationService() ([]models.Location, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "LocationGetAll")
 	ret0, _ := ret[0].([]models.Location)
@@ -61,13 +61,13 @@ func (m *MockLocationService) LocationGetAll() ([]models.Location, error) {
 }
 
 // LocationGetAll indicates an expected call of LocationGetAll.
-func (mr *MockLocationServiceMockRecorder) LocationGetAll() *gomock.Call {
+func (mr *MockLocationServiceMockRecorder) GetAllLocationService() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationGetAll", reflect.TypeOf((*MockLocationService)(nil).LocationGetAll))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationGetAll", reflect.TypeOf((*MockLocationService)(nil).GetAllLocationService))
 }
 
 // LocationGetByNameWithData mocks base method.
-func (m *MockLocationService) LocationGetByNameWithData(arg0 primitive.ObjectID) ([]models.Location, error) {
+func (m *MockLocationService) GetByNameWithDataLocationService(arg0 primitive.ObjectID) ([]models.Location, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "LocationGetByNameWithData", arg0)
 	ret0, _ := ret[0].([]models.Location)
@@ -76,13 +76,13 @@ func (m *MockLocationService) LocationGetByNameWithData(arg0 primitive.ObjectID)
 }
 
 // LocationGetByNameWithData indicates an expected call of LocationGetByNameWithData.
-func (mr *MockLocationServiceMockRecorder) LocationGetByNameWithData(arg0 interface{}) *gomock.Call {
+func (mr *MockLocationServiceMockRecorder) GetByNameWithDataLocationService(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationGetByNameWithData", reflect.TypeOf((*MockLocationService)(nil).LocationGetByNameWithData), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationGetByNameWithData", reflect.TypeOf((*MockLocationService)(nil).GetByNameWithDataLocationService), arg0)
 }
 
 // LocationInsert mocks base method.
-func (m *MockLocationService) LocationInsert(arg0 models.Location) (*dto.LocationDTO, error) {
+func (m *MockLocationService) InsertLocationService(arg0 models.Location) (*dto.LocationDTO, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "LocationInsert", arg0)
 	ret0, _ := ret[0].(*dto.LocationDTO)
@@ -91,13 +91,13 @@ func (m *MockLocationService) LocationInsert(arg0 models.Location) (*dto.Locatio
 }
 
 // LocationInsert indicates an expected call of LocationInsert.
-func (mr *MockLocationServiceMockRecorder) LocationInsert(arg0 interface{}) *gomock.Call {
+func (mr *MockLocationServiceMockRecorder) InsertLocationService(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationInsert", reflect.TypeOf((*MockLocationService)(nil).LocationInsert), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationInsert", reflect.TypeOf((*MockLocationService)(nil).InsertLocationService), arg0)
 }
 
 // LocationRouting mocks base method.
-func (m *MockLocationService) LocationRouting(arg0 models.Location) ([]primitive.M, error) {
+func (m *MockLocationService) RouteLocationService(arg0 models.Location) ([]primitive.M, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "LocationRouting", arg0)
 	ret0, _ := ret[0].([]primitive.M)
@@ -106,13 +106,13 @@ func (m *MockLocationService) LocationRouting(arg0 models.Location) ([]primitive
 }
 
 // LocationRouting indicates an expected call of LocationRouting.
-func (mr *MockLocationServiceMockRecorder) LocationRouting(arg0 interface{}) *gomock.Call {
+func (mr *MockLocationServiceMockRecorder) RouteLocationService(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationRouting", reflect.TypeOf((*MockLocationService)(nil).LocationRouting), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationRouting", reflect.TypeOf((*MockLocationService)(nil).RouteLocationService), arg0)
 }
 
 // LocationUpdateByID mocks base method.
-func (m *MockLocationService) LocationUpdateByID(arg0 models.Location) (*dto.LocationDTO, error) {
+func (m *MockLocationService) UpdateByIDLocationService(arg0 models.Location) (*dto.LocationDTO, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "LocationUpdateByID", arg0)
 	ret0, _ := ret[0].(*dto.LocationDTO)
@@ -121,7 +121,7 @@ func (m *MockLocationService) LocationUpdateByID(arg0 models.Location) (*dto.Loc
 }
 
 // LocationUpdateByID indicates an expected call of LocationUpdateByID.
-func (mr *MockLocationServiceMockRecorder) LocationUpdateByID(arg0 interface{}) *gomock.Call {
+func (mr *MockLocationServiceMockRecorder) UpdateByIDLocationService(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationUpdateByID", reflect.TypeOf((*MockLocationService)(nil).LocationUpdateByID), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LocationUpdateByID", reflect.TypeOf((*MockLocationService)(nil).UpdateByIDLocationService), arg0)
 }

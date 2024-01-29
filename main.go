@@ -11,14 +11,12 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 )
 
-// projeyi mainden ayağa kaldıraz
-// sertup.go'daki connectedDB'yi çalıştıracağız
-// https://gist.github.com/aliustunelin/8e2d1fa132177507827f94d7f716795f
+// run setup.go start mongoDB
 func main() {
 	appRoute := fiber.New()
 	configs.ConnectDB()
 	//mongodb name
-	dbClient := configs.GetCollection(configs.DB, "YukatLocations")
+	dbClient := configs.GetCollection(configs.DB, configs.EnvMongoName())
 
 	TodoRepoDb := repos.NewLocationReposDb(dbClient)
 
@@ -48,15 +46,15 @@ func main() {
 		return td.GetAllLocation(c)
 	})
 
-	//golang'deki id mongo' id değil
-	appRoute.Delete("/api/deleteLocation/:id", func(c *fiber.Ctx) error {
+	//id parameters include golang IDs, not mongo ID
+	appRoute.Delete("/api/deleteLocation", func(c *fiber.Ctx) error {
 		if c.Locals("limit") != nil {
 			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})
 		}
 		return td.DeleteLocation(c)
 	})
 
-	appRoute.Get("/api/location/:id", func(c *fiber.Ctx) error {
+	appRoute.Get("/api/location", func(c *fiber.Ctx) error {
 		if c.Locals("limit") != nil {
 			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})
 		}
@@ -74,7 +72,7 @@ func main() {
 		if c.Locals("limit") != nil {
 			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})
 		}
-		return td.RoutingLocation(c)
+		return td.RouteLocation(c)
 	})
 	appRoute.Listen(":8080")
 

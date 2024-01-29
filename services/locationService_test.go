@@ -32,13 +32,13 @@ func setup(t *testing.T) func() {
 	}
 }
 
-func TestDefaultLocationService_LocationGetAll(t *testing.T) {
+func TestDefaultLocationService_GetAllLocationService(t *testing.T) {
 	td := setup(t)
 	defer td()
 
 	mockRepo.EXPECT().GetAll().Return(fakeData, nil)
 
-	result, err := service.LocationGetAll()
+	result, err := service.GetAllLocationService()
 	if err != nil {
 		t.Error(err)
 	}
@@ -46,7 +46,7 @@ func TestDefaultLocationService_LocationGetAll(t *testing.T) {
 	assert.NotEmpty(t, result)
 }
 
-func TestDefaultLocationService_LocationInsert(t *testing.T) {
+func TestDefaultLocationService_InsertLocationService(t *testing.T) {
 	td := setup(t)
 	defer td()
 
@@ -59,7 +59,7 @@ func TestDefaultLocationService_LocationInsert(t *testing.T) {
 
 	mockRepo.EXPECT().Insert(locationMini).Return(true, nil)
 
-	result, err := service.LocationInsert(locationMini)
+	result, err := service.InsertLocationService(locationMini)
 	if err != nil {
 		t.Error(err)
 	}
@@ -67,7 +67,7 @@ func TestDefaultLocationService_LocationInsert(t *testing.T) {
 	assert.NotEmpty(t, result)
 }
 
-func TestDefaultLocationService_LocationDelete(t *testing.T) {
+func TestDefaultLocationService_DeleteLocationService(t *testing.T) {
 	td := setup(t)
 	defer td()
 
@@ -76,7 +76,7 @@ func TestDefaultLocationService_LocationDelete(t *testing.T) {
 	mockRepo.EXPECT().GetAll().Return(fakeData, nil)
 	mockRepo.EXPECT().Delete(fakeID).Return(true, nil)
 
-	result, err := service.LocationDelete(fakeID)
+	result, err := service.DeleteLocationService(fakeID)
 	if err != nil {
 		t.Error(err)
 	}

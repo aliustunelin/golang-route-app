@@ -15,15 +15,15 @@ type DefaultLocationService struct {
 }
 
 type LocationService interface {
-	LocationInsert(Location models.Location) (*dto.LocationDTO, error)
-	LocationGetAll() ([]models.Location, error)
-	LocationDelete(id primitive.ObjectID) (bool, error)
-	LocationGetByNameWithData(id primitive.ObjectID) ([]models.Location, error)
-	LocationUpdateByID(location models.Location) (*dto.LocationDTO, error)
-	LocationRouting(location models.Location) ([]primitive.M, error)
+	InsertLocationService(Location models.Location) (*dto.LocationDTO, error)
+	GetAllLocationService() ([]models.Location, error)
+	DeleteLocationService(id primitive.ObjectID) (bool, error)
+	GetByNameWithDataLocationService(id primitive.ObjectID) ([]models.Location, error)
+	UpdateByIDLocationService(location models.Location) (*dto.LocationDTO, error)
+	RouteLocationService(location models.Location) ([]primitive.M, error)
 }
 
-func (t DefaultLocationService) LocationInsert(Location models.Location) (*dto.LocationDTO, error) {
+func (t DefaultLocationService) InsertLocationService(Location models.Location) (*dto.LocationDTO, error) {
 	var res dto.LocationDTO
 	if len(Location.Name) < 2 {
 		res.Status = false
@@ -40,7 +40,7 @@ func (t DefaultLocationService) LocationInsert(Location models.Location) (*dto.L
 	return &res, nil
 }
 
-func (t DefaultLocationService) LocationGetAll() ([]models.Location, error) {
+func (t DefaultLocationService) GetAllLocationService() ([]models.Location, error) {
 	result, err := t.Repo.GetAll()
 	if err != nil {
 		return nil, err
@@ -48,7 +48,7 @@ func (t DefaultLocationService) LocationGetAll() ([]models.Location, error) {
 	return result, nil
 }
 
-func (t DefaultLocationService) LocationDelete(id primitive.ObjectID) (bool, error) {
+func (t DefaultLocationService) DeleteLocationService(id primitive.ObjectID) (bool, error) {
 	result, err := t.Repo.Delete(id)
 
 	if err != nil || result == false {
@@ -58,7 +58,7 @@ func (t DefaultLocationService) LocationDelete(id primitive.ObjectID) (bool, err
 	return true, nil
 }
 
-func (t DefaultLocationService) LocationGetByNameWithData(id primitive.ObjectID) ([]models.Location, error) {
+func (t DefaultLocationService) GetByNameWithDataLocationService(id primitive.ObjectID) ([]models.Location, error) {
 	result, err := t.Repo.GetByNameWithData(id)
 	if err != nil {
 		log.Fatalln(err)
@@ -67,7 +67,7 @@ func (t DefaultLocationService) LocationGetByNameWithData(id primitive.ObjectID)
 
 }
 
-func (t DefaultLocationService) LocationUpdateByID(location models.Location) (*dto.LocationDTO, error) {
+func (t DefaultLocationService) UpdateByIDLocationService(location models.Location) (*dto.LocationDTO, error) {
 	var res dto.LocationDTO
 	if len(location.Name) < 2 {
 		res.Status = false
@@ -85,7 +85,7 @@ func (t DefaultLocationService) LocationUpdateByID(location models.Location) (*d
 	return &res, nil
 }
 
-func (t DefaultLocationService) LocationRouting(location models.Location) ([]primitive.M, error) {
+func (t DefaultLocationService) RouteLocationService(location models.Location) ([]primitive.M, error) {
 	result, err := t.Repo.Routing(location)
 	if err != nil {
 		log.Fatalln(err)
