@@ -83,3 +83,14 @@ func TestDefaultLocationService_DeleteLocationService(t *testing.T) {
 	//test funcs
 	assert.Equal(t, result, true)
 }
+
+func TestDefaultLocationService_GetByNameWithDataLocationService(t *testing.T) {
+	td := setup(t)
+	defer td()
+
+	fakeID := fakeData[0].Id
+
+	result := mockRepo.EXPECT().GetByNameWithData(fakeID)
+
+	assert.NotEmpty(t, result)
+}
