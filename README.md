@@ -8,7 +8,9 @@ Go'da bir rota çizim uygulaması planlayalım. </br> </br> </br>
 ->Uygulama istek limitine sahiptir. Max 20 tane istek hafızada 30sn olacak şekilde uygulama dışarıdan yapılacak olağan dışı trafiklere karşı koruma katmanına sahiptir.</br></br>
 ->Uygulama Dockerize bir şekilde çalışma imkanı sunmaktadır.</br></br>
 ->Uygulama CI/CD süreçlerine uygun bir şekilde geliştirilmiştir. Github Actions kullanılarak CI pipeline süreçleri yönetilmiş olup uygulama geliştrme ve test ortamında çalışmasında süreç main dalı üzerinde otomatize edilmiştir.</br></br>
-->CI/CD süreçlerinden deploy kısmında uygulama Heroku üzerinde canlıya alınmıştır.</br>
+->CI/CD süreçlerinden deploy kısmında uygulama AWS üzerinde canlıya alınmıştır.</br>
+-> Amazon Elastic Container Registry (ECR) servisi ile proje image'leri AWS sunucularına yerleştirilmiştir. </br>
+-> Amazon Elastic Container Service (ECS) servisi ile proje ayağa kaldırlmıştır.
 
 </br></br></br>
 
