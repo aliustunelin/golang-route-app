@@ -4,6 +4,7 @@ import (
 	"golang-route-app/app"
 	"golang-route-app/configs"
 	"golang-route-app/repos"
+	"golang-route-app/routes"
 	"golang-route-app/services"
 	"time"
 
@@ -14,7 +15,7 @@ import (
 // run setup.go start mongoDB
 func main() {
 	appRoute := fiber.New()
-	configs.ConnectDB()
+
 	//mongodb name
 	dbClient := configs.GetCollection(configs.DB, configs.EnvMongoName())
 
@@ -31,49 +32,8 @@ func main() {
 	}
 	appRoute.Use(limiter.New(limiterConfig))
 
-	appRoute.Post("/api/createLocation", func(c *fiber.Ctx) error {
-		if c.Locals("limit") != nil {
-			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})
-		}
-		return td.CreateLocation(c)
-	})
+	routes.ApiRoute(appRoute, td)
 
-	appRoute.Get("/api/getLocations", func(c *fiber.Ctx) error {
-
-		if c.Locals("limit") != nil {
-			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})
-		}
-		return td.GetAllLocation(c)
-	})
-
-	//id parameters include golang IDs, not mongo ID
-	appRoute.Delete("/api/deleteLocation", func(c *fiber.Ctx) error {
-		if c.Locals("limit") != nil {
-			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})
-		}
-		return td.DeleteLocation(c)
-	})
-
-	appRoute.Get("/api/location", func(c *fiber.Ctx) error {
-		if c.Locals("limit") != nil {
-			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})
-		}
-		return td.GetByNameWithDataLocation(c)
-	})
-
-	appRoute.Post("/api/updateLocation", func(c *fiber.Ctx) error {
-		if c.Locals("limit") != nil {
-			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})
-		}
-		return td.UpdateByIDLocation(c)
-	})
-
-	appRoute.Post("/api/routing", func(c *fiber.Ctx) error {
-		if c.Locals("limit") != nil {
-			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})
-		}
-		return td.RouteLocation(c)
-	})
 	appRoute.Listen(":8080")
 
 }
