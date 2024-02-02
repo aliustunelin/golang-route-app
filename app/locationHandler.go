@@ -56,6 +56,15 @@ func (h LocationHandler) DeleteLocation(c *fiber.Ctx) error {
 	return c.Status(http.StatusOK).JSON(fiber.Map{"State": true})
 }
 
+func (h LocationHandler) DeleteAllLocation(c *fiber.Ctx) error {
+	result, err := h.Service.DeleteAllLocationService()
+	if err != nil || result == false {
+		return c.Status(http.StatusBadRequest).JSON(fiber.Map{"State": false})
+	}
+
+	return c.Status(http.StatusOK).JSON(fiber.Map{"State": true})
+}
+
 func (h LocationHandler) GetByNameWithDataLocation(c *fiber.Ctx) error {
 	var loction models.Location
 

@@ -20,6 +20,7 @@ type LocationService interface {
 	GetByNameWithDataLocationService(id primitive.ObjectID) ([]models.Location, error)
 	UpdateByIDLocationService(location models.Location) (*dto.LocationDTO, error)
 	RouteLocationService(location models.Location) ([]primitive.M, error)
+	DeleteAllLocationService() (bool, error)
 }
 
 func (t DefaultLocationService) InsertLocationService(Location models.Location) (*dto.LocationDTO, error) {
@@ -50,6 +51,15 @@ func (t DefaultLocationService) GetAllLocationService() ([]models.Location, erro
 func (t DefaultLocationService) DeleteLocationService(id primitive.ObjectID) (bool, error) {
 	result, err := t.Repo.Delete(id)
 
+	if err != nil || result == false {
+		return false, err
+	}
+
+	return true, nil
+}
+
+func (t DefaultLocationService) DeleteAllLocationService() (bool, error) {
+	result, err := t.Repo.DeleteAll()
 	if err != nil || result == false {
 		return false, err
 	}

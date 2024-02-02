@@ -7,6 +7,14 @@ import (
 )
 
 func ApiRoute(ctx *fiber.App, td app.LocationHandler) {
+
+	ctx.Delete("/api/deleteAll", func(c *fiber.Ctx) error {
+		if c.Locals("limit") != nil {
+			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})
+		}
+		return td.DeleteAllLocation(c)
+	})
+
 	ctx.Post("/api/createLocation", func(c *fiber.Ctx) error {
 		if c.Locals("limit") != nil {
 			return c.Status(fiber.StatusTooManyRequests).JSON(fiber.Map{"error": "Rate limit exceeded"})

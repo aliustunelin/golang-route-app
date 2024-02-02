@@ -25,6 +25,7 @@ type LocationRepos interface {
 	GetByNameWithData(id primitive.ObjectID) ([]models.Location, error)
 	UpdateByID(location models.Location) (bool, error)
 	Routing(location models.Location) ([]primitive.M, error)
+	DeleteAll() (bool, error)
 }
 
 func (t LocationReposDB) Insert(location models.Location) (bool, error) {
@@ -40,6 +41,18 @@ func (t LocationReposDB) Insert(location models.Location) (bool, error) {
 		return false, err
 	}
 
+	return true, nil
+}
+
+func (t LocationReposDB) DeleteAll() (bool, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	result, err := t.LocationCollection.DeleteMany(ctx, bson.M{})
+	if err != nil || result.DeletedCount == 0 {
+		log.Fatalln(err)
+		return false, err
+	}
 	return true, nil
 }
 
