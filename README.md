@@ -46,6 +46,12 @@ go get go.mongodb.org/mongo-driver/x/mongo/driver/ocsp@v1.9.1
 go get -u github.com/gofiber/fiber/v2
 go get golang.org/x/time/rate
 go get golang.org/x/net/http
+
+go get -u github.com/gofiber/fiber/v2
+go get -u gorm.io/gorm
+go get -u github.com/gofiber/fiber/v2/middleware/logger
+go get -u github.com/gofiber/fiber/v2/middleware/recover
+go get -u github.com/confluentinc/confluent-kafka-go/kafka
 ```
 
 Go Run veya Go Build
